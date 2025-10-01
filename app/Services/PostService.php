@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 
 class PostService
@@ -23,6 +24,12 @@ class PostService
     public function showPost($post)
     {
         return app(TryService::class)(function () use ($post){
+            return $post;
+        });
+    }
+    public function updatePost($request, Post $post){
+        return app(TryService::class)(function () use ($request, $post){
+            $post->update($request->all());
             return $post;
         });
     }
