@@ -21,4 +21,11 @@ class CategoryService
             return Category::create($request->validated());
         });
     }
+
+    public function showCategory($category)
+    {
+        return app(TryService::class)(function () use ($category){
+            return $category;
+        });
+    }
 }
