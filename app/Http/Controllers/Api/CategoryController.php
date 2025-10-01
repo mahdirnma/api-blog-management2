@@ -64,6 +64,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $result=$this->service->deleteCategory($category);
+        $actionResult=$result->success?
+            (new ApiResponseBuilder())->message('Category deleted successfully'):
+            (new ApiResponseBuilder())->message('Category not deleted successfully');
+        return $actionResult->response();
     }
 }
