@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use GuzzleHttp\Promise\Create;
 
@@ -25,6 +26,14 @@ class CategoryService
     public function showCategory($category)
     {
         return app(TryService::class)(function () use ($category){
+            return $category;
+        });
+    }
+
+    public function updateCategory($request,$category)
+    {
+        return app(TryService::class)(function () use ($request,$category){
+            $category->update($request->all());
             return $category;
         });
     }
