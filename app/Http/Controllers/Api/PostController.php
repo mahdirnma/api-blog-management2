@@ -40,7 +40,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $result=$this->service->showPost($post);
+        $actionResult=$result->success?
+            (new ApiResponseBuilder())->message('Post received successfully'):
+            (new ApiResponseBuilder())->message('Post not received successfully!');
+        return $actionResult->data($result->data)->response();
     }
 
     /**
