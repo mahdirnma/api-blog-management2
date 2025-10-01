@@ -10,6 +10,7 @@ class Post extends Model
         'title',
         'description',
         'date',
+        'category_id',
         'is_active',
     ];
 
